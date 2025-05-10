@@ -2,3 +2,5 @@ fastapi
 uvicorn[standard]
 pydantic
 playwright 
+charset_normalizer
+markdownify
