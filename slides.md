@@ -206,8 +206,9 @@ Ben
 ## Agentic RAG
 
 
-
+<font size=1>from: https://weaviate.io/blog/what-are-agentic-workflows</font>
 ![agentic-search-workflow](media/agentic-search-workflow.jpg)
+
 
 
 ----
@@ -219,20 +220,20 @@ Ben
 
 ----
 
-## Agentic RAG in `n8n`
+### Agentic RAG in `n8n`
 
 ![n8n_ai_agent_rag](media/n8n_ai_agent_rag.png)
 
 ----
 
-## RAG
+### RAG
 
 ![RAG](media/RAG.png)
 
 
 ----
 
-## Agentic RAG
+### Agentic RAG
 
 ![Agentic_RAG](media/Agentic_RAG.png)
 
@@ -263,17 +264,30 @@ Ben
 
 ----
 
-## MCP Client- SSE
+### Model Context Protocol 
 
+<font size=1>from: https://ikala.ai/zh-tw/blog/ikala-ai-insight/what-is-model-context-protocol-mcp/</font>
+![](media/mcp_usb.png)
+
+
+----
+
+### MCP host & client in n8n
+
+![n8n_crawler_playwright](media/n8n_crawler_playwright.png)
+
+----
+
+### MCP Client- SSE
+Server-Sent Events
 ![mcp_client_sse](media/mcp_client_sse.png)
 
 
 
 ----
 
-## MCP Client- STDIO
-
-
+### MCP Client- STDIO
+Standard I/O
 ![community_node](media/community_node.png)
 
 
@@ -378,9 +392,6 @@ Ben
 <!-- .slide: data-background="media/stylist.png" -->
 
 ----
-
-
-## 投影片 + `Code`
 
 ![](media/QR_slides.png)
 
