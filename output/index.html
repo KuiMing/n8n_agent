@@ -1,0 +1,810 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Metadata about the presentation -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>n8n-agent</title>
+
+    <meta name="description" content="我不想寫 code 了：AI Agent in n8n">
+    <meta name="author" content="Ben Chen">
+
+    <!-- Presentation Styles -->
+    <link rel="stylesheet" href="static/revealjs/dist/reset.css">
+    <link rel="stylesheet" href="static/revealjs/dist/reveal.css">
+
+    
+      <link rel="stylesheet" href="static/revealjs/dist/theme/night.css" id="theme">
+    
+
+    
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="static/revealjs/plugin/highlight/monokai.css" id="highlight-theme">
+  </head>
+
+  <body>
+    <!-- Presentation body -->
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        
+          
+            
+              <section data-markdown>
+                <textarea data-template>
+                  ## 我不想寫 code 了
+## AI Agent in n8n
+
+2025-05-25
+
+Ben
+
+
+                </textarea>
+              </section>
+            
+          
+        
+          
+            
+              <section data-markdown>
+                <textarea data-template>
+                  
+
+
+
+<!-- .slide: data-background-iframe="media/Ben.html" -->
+
+
+                </textarea>
+              </section>
+            
+          
+        
+          
+            
+              <section data-markdown>
+                <textarea data-template>
+                  
+
+## Outline
+
+- 提速 3 倍？
+- AI Agent in n8n
+- MCP in n8n
+- 打造我的 AI 團隊
+
+
+
+
+                </textarea>
+              </section>
+            
+          
+        
+          
+            <section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+
+<!-- .slide: data-auto-animate -->
+
+# 提速 3 倍？
+- <font color='#646464'>AI Agent in n8n</font>
+- <font color='#646464'>MCP in n8n</font>
+- <font color='#646464'>打造我的 AI 團隊</font>
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+有一天，老闆問：『如何提速3倍』
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+提速三倍？那不就代表我可能會有三倍工作量？
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+壓力超大....不想寫 Code....
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+已經有三個人跟我說，都已經老大不小了，寫啥 Code.....
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+![n8n_ai_agent](media/n8n_ai_agent.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+## AI Agent
+
+
+
+
+能感知環境、規劃動作與利用記憶進行推理，並透過工具或 API 呼叫執行任務以達成預定目標的系統
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## AI Agent
+
+![ai_agent](media/ai_agent.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `n8n`
+
+### API 懶人包 + 樂高
+#### 自動化工作流程工具
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+## WHY `n8n`
+- **開源且免費**：可自架設於本地或雲端，無需擔心資料隱私。
+- **高度彈性**：支援自訂節點與腳本，滿足各種自動化需求，可設置多種觸發器。
+- **資源豐富**：擁有龐大開發者社群、豐富範例與插件，官方快速迭代回應新需求，對比封閉商業平台更易獲得資源與技術支援。
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `n8n` Nodes
+
+![ai_agent](media/n8n_nodes.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `n8n` Credential- 地端
+
+
+![](media/credential_local.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `n8n` Credential- 雲端
+
+![](media/credential_cloud.png)
+
+
+
+
+                  </textarea>
+                </section>
+              
+            </section>
+          
+        
+          
+            <section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+<!-- .slide: data-auto-animate -->
+
+- <font color='#646464'> 提速3倍？</font>
+# AI Agent in n8n
+- <font color='#646464'>MCP in n8n</font>
+- <font color='#646464'>打造我的 AI 團隊</font>
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## Agentic Workflow
+### 讓 Agent 自己找工具
+![ai_agent_flow](media/ai_agent_flow.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `playwright`
+
+* Microsoft 出品的跨瀏覽器自動化測試框架，支援 Chromium、Firefox 與 WebKit。
+* 多語言 API 與 MCP。
+* 內建並行測試、網路攔截、截圖與錄影等功能，適用於端到端測試與爬蟲。
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 範例：我需要取得球賽賽況資訊
+
+[Italy Serie A- NAP vs CAG](https://www.espn.com/soccer/commentary/_/gameId/712488
+)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### AI Agent 直連 Playwright MCP
+
+![n8n_crawler_playwright](media/n8n_crawler_playwright.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### AI Agent 直連 Playwright MCP
+
+
+```json
+[
+  {
+    "Time": "42'",
+    "Commentary": "Goal - Volley Goal! Napoli 1, Cagliari 0. Scott McTominay (Napoli) right footed shot from the centre of the box to the centre of the goal. Assisted by Matteo Politano with a cross."
+  },
+  {
+    "Time": "51'",
+    "Commentary": "Goal! Napoli 2, Cagliari 0. Romelu Lukaku (Napoli) left footed shot from the centre of the box to the bottom right corner. Assisted by Amir Rrahmani."
+  },
+  {
+    "Time": "52'",
+    "Commentary": "Yellow Card - Romelu Lukaku (Napoli) is shown the yellow card for excessive celebration."
+  },
+  {
+    "Time": "FT",
+    "Commentary": "Match ends, Napoli 2, Cagliari 0."
+  }
+]
+
+```
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+## Agentic Workflow- 幫他找工具
+
+![ai_agen_tool_flow](media/ai_agen_tool_flow.png)
+
+把不需要 LLM 的步驟先做完
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### API Server + n8n
+
+
+![n8n_playwright_api_server](media/n8n_playwright_api_server.png)
+
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## AI Agentic 影分身之術
+
+![n8n_crawler_playwright_multi](media/n8n_crawler_playwright_multi.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## Agentic RAG
+
+
+
+![agentic-search-workflow](media/agentic-search-workflow.jpg)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## Agentic RAG
+
+![agentic-rag](media/agentic-rag.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## Agentic RAG in `n8n`
+
+![n8n_ai_agent_rag](media/n8n_ai_agent_rag.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## RAG
+
+![RAG](media/RAG.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## Agentic RAG
+
+![Agentic_RAG](media/Agentic_RAG.png)
+
+
+
+                  </textarea>
+                </section>
+              
+            </section>
+          
+        
+          
+            <section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+
+<!-- .slide: data-auto-animate -->
+
+- <font color='#646464'> 提速3倍？</font>
+- <font color='#646464'> AI Agent in n8n</font>
+# MCP in n8n
+- <font color='#646464'>打造我的 AI 團隊</font>
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## MCP in n8n
+
+
+- MCP Client
+    - SSE
+    - STDIO (community)
+- MCP Server
+    - SSE
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## MCP Client- SSE
+
+![mcp_client_sse](media/mcp_client_sse.png)
+
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## MCP Client- STDIO
+
+
+![community_node](media/community_node.png)
+
+
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+![mcp_server_sse](media/mcp_server_sse.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+![playwright_workflow](media/playwright_workflow.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### `claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+
+    "n8n-playwright":{
+          "command": "npx",
+          "args": [
+            "-y",
+            "supergateway",
+            "--sse",
+            "http://xxx.xxx.xx/mcp/playwright_n8n/sse"
+      ]
+    }
+  }
+}
+```
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### MCP from `n8n` in Claude
+
+![claude_mcp](media/claude_mcp.png)
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 目前`n8n`使用心得
+
+- 少寫不少 code
+- 找不到適合的 Node
+    - 稍微寫一點 code
+    - 直接使用 HTTP Request Node
+
+
+
+                  </textarea>
+                </section>
+              
+            </section>
+          
+        
+          
+            <section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+<!-- .slide: data-auto-animate -->
+
+- <font color='#646464'> 提速3倍？</font>
+- <font color='#646464'> AI Agent in n8n </font>
+- <font color='#646464'>MCP in n8n</font>
+# 打造我的 AI 團隊
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## AI 新成員
+
+- 已經報到
+    - 秘書：回信
+    - 寫手：寫報告
+    - 行銷助理：整理新聞素材
+    - 造型師：設計符合主題的造型
+- 即將報到
+    - 資料工程師：提供資料給營運團隊
+    - MIS 櫃檯：回答日常電腦相關的蠢問題
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 秘書
+
+![email](media/email.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 寫手
+
+
+![](media/writer.png)
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 行銷助理
+![marketing_assistant](media/marketing_assistant.png)
+
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+### 造型師
+
+<!-- .slide: data-background="media/stylist.png" -->
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+## 投影片 + `Code`
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+## `Facebook`
+
+
+<img src=media/QR_R_Ladies_Taipei.png width=50%></img><img src=media/QR_Ben_facebook.png width=50%></img>
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+<!-- .slide: data-background-iframe="https://www.accupass.com/go/ai_image_rladies" -->
+
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+
+<!-- .slide: data-background-iframe="https://www.accupass.com/go/openfun_rladies" -->
+
+
+                  </textarea>
+                </section>
+              
+                <section data-markdown>
+                  <textarea data-template>
+                    
+
+# Thank you
+                  </textarea>
+                </section>
+              
+            </section>
+          
+        
+      </div>
+
+    </div>
+
+    <!-- Reveal.js script -->
+    <script src="static/revealjs/dist/reveal.js"></script>
+
+    <!-- Reveal.js plugins -->
+    <script src="static/revealjs/plugin/markdown/markdown.js"></script>
+    <script src="static/revealjs/plugin/highlight/highlight.js"></script>
+    <script src="static/revealjs/plugin/search/search.js"></script>
+    <script src="static/revealjs/plugin/notes/notes.js"></script>
+    <script src="static/revealjs/plugin/math/math.js"></script>
+    <script src="static/revealjs/plugin/zoom/zoom.js"></script>
+
+    <script>
+      Reveal.initialize({
+        math: {
+          mathjax: 'static/mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          // pass other options into `MathJax.Hub.Config()`
+          TeX: { Macros: { RR: "{\\bf R}" } }
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealSearch,
+          RevealNotes,
+          RevealMath,
+          RevealZoom
+        ]
+      });
+
+      Reveal.configure({"autoAnimate": true, "autoAnimateDuration": 1.0, "autoAnimateEasing": "ease", "autoAnimateMatcher": null, "autoAnimateStyles": ["opacity", "color", "background-color", "padding", "font-size", "line-height", "letter-spacing", "border-width", "border-color", "border-radius", "outline", "outline-offset"], "autoAnimateUnmatched": true, "autoPlayMedia": null, "autoSlide": 0, "autoSlideMethod": null, "autoSlideStoppable": true, "backgroundTransition": "fade", "center": true, "controls": true, "controlsBackArrows": "faded", "controlsLayout": "bottom-right", "controlsTutorial": true, "defaultTiming": null, "disableLayout": false, "display": "block", "embedded": false, "focusBodyOnPageVisibilityChange": true, "fragmentInURL": true, "fragments": true, "hash": true, "hashOneBasedIndex": false, "help": true, "hideCursorTime": 5000, "hideInactiveCursor": true, "history": true, "keyboard": true, "keyboardCondition": null, "loop": false, "mobileViewDistance": 2, "mouseWheel": false, "navigationMode": "default", "overview": true, "pause": true, "pdfPageHeightOffset": -1, "pdfSeparateFragments": true, "postMessage": true, "preloadIframes": null, "previewLinks": false, "progress": true, "respondToHashChanges": true, "rtl": false, "showNotes": false, "showSlideNumber": "all", "shuffle": false, "slideNumber": false, "touch": true, "transition": "slide", "transitionSpeed": "default", "viewDistance": 3});
+    </script>
+  </body>
+</html>
