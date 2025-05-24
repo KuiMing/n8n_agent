@@ -382,6 +382,8 @@ Ben
 
 ## 投影片 + `Code`
 
+![](media/QR_slides.png)
+
 ----
 
 ## `Facebook`
