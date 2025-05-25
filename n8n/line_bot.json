@@ -1,0 +1,311 @@
+{
+  "name": "line_bot",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        1520
+      ],
+      "id": "cc51834b-7839-4eed-bfbc-71dc3e43d2c7",
+      "name": "Azure OpenAI Chat Model1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        160,
+        1220
+      ],
+      "id": "cf0450a6-576a-44f6-865e-9242638b32f3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "\n# 在 n8n 的 Python Code 節點中使用，輸入變數為 items（List[Dict]）\n\n\n# 確保必要數據存在\nreply_token_item = next(\n    (\n        item for item in items\n        if item.get('json', {}) \\\n               .get('body', {}) \\\n               .get('events', [{}])[0] \\\n               .get('replyToken')\n    ),\n    None\n)\n\n\n\noutput_item = next(\n    (\n        item for item in items\n        if item.get('json', {}).get('output') is not None\n    ),\n    None\n)\n\n\nif not reply_token_item or not output_item:\n    raise ValueError(\"缺少必要數據，請檢查 Webhook & AI Agent 節點輸出\")\n\n# 取得 replyToken 和 AI Agent 回傳文字，並移除多餘的換行\nreply_token = reply_token_item['json']['body']['events'][0]['replyToken']\ntext = output_item['json']['output'].strip()\n\n# 回傳整理後的結果\nreturn [\n    {\n        'json': {\n            'replyToken': reply_token,\n            'text': text\n        }\n    }\n]\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        1220
+      ],
+      "id": "a43b0774-b902-4d40-99d5-9def813648ef",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=回應這個訊息：{{ $json.body.events[0].message.text }}\n以繁體中文，純文字輸出，不要帶 HTML。",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -280,
+        1280
+      ],
+      "id": "6d41c324-8d02-4a22-8307-98abe28cda11",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "callback",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        1200
+      ],
+      "id": "46d25c77-bb30-404b-ae45-bb5e92826ee4",
+      "name": "Webhook1",
+      "webhookId": "08fd8b54-80e4-463d-9e25-28dd30463641"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer fGYFFTC5pNVcr18u7zV6qZR5lNNHDH3/0hmlXmritsnfHEsRvNS8nF6ZGB/7avPNuxh9PlLf+1BAvaIgdQ3PtZupaOoKDhdH7ab4q2/VEtuBr8wsL29UUwoLSzbgGoix1LPHJZc9xKyNeOWVtXW7mQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $json.replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text }}\"\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        1220
+      ],
+      "id": "0238e96f-bd43-42fa-8154-200078e18881",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "content": "# Trigger Node",
+        "height": 180
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        1140
+      ],
+      "id": "8df83eb7-0e58-4a09-8923-3a3487b845cc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# Cluster Node",
+        "height": 260,
+        "width": 360,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        1160
+      ],
+      "id": "7bcb2cde-761a-45dc-8804-cc1b75d9492b",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# Sub-Node",
+        "height": 200,
+        "width": 300,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        1460
+      ],
+      "id": "740242cd-c220-43a6-8a30-c929d1d7b75f",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Flow Node",
+        "height": 180,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        60,
+        1160
+      ],
+      "id": "8b0f915c-fb9f-40f6-8402-7aca06e782dd",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# Core Node",
+        "height": 220,
+        "width": 420,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        340,
+        1160
+      ],
+      "id": "87e93453-3f1b-432d-b5a0-2aeb6d3eb5a8",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "ds.n8n.poc.owgps.net",
+            "x-request-id": "739042a50221f3e51956ac2686b74d3c",
+            "x-real-ip": "147.92.149.167",
+            "x-forwarded-for": "147.92.149.167",
+            "x-forwarded-host": "ds.n8n.poc.owgps.net",
+            "x-forwarded-port": "80",
+            "x-forwarded-proto": "https",
+            "x-forwarded-scheme": "https",
+            "x-scheme": "https",
+            "x-original-forwarded-for": "147.92.149.167",
+            "x-accel-buffering": "no",
+            "content-length": "562",
+            "forwarded": "for=147.92.149.167",
+            "x-line-signature": "2qSFYe7BTvxrOn0z64EZYDLxHAs6oZHUqHQy17NMGmc=",
+            "content-type": "application/json; charset=utf-8",
+            "user-agent": "LineBotWebhook/2.0"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "destination": "U2f0ad4bdaaf3055d735539452bfb010d",
+            "events": [
+              {
+                "type": "message",
+                "message": {
+                  "type": "text",
+                  "id": "561446579425510193",
+                  "quoteToken": "xlckuY89dlPToHezYq9OH7vk_kl2ctVfNDx-PYDJVOdJc-uMwXmoakL0L4arKiV_rLrHm6Pg4xMn4LOJ1sAu02tr5yIx611QxUsj6OshR6XzjUU895BR1hlbnMrtz2bukZBK9bk8Zbl986x3S7BPpg",
+                  "text": "哈囉"
+                },
+                "webhookEventId": "01JVEYBFP0VJQPQNFAP19PXYVX",
+                "deliveryContext": {
+                  "isRedelivery": false
+                },
+                "timestamp": 1747479543287,
+                "source": {
+                  "type": "user",
+                  "userId": "U38635785c5765ac1219426c9bcbaa844"
+                },
+                "replyToken": "1fa282f222a94b9fb768988df4c9b2fc",
+                "mode": "active"
+              }
+            ]
+          },
+          "webhookUrl": "https://ds.n8n.poc.owgps.net/webhook/callback",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a81f2b73-b1b2-4c5e-bb01-c147b2526428",
+  "meta": {
+    "instanceId": "059eb6e23c9b66b6ce768abf5d026625d8c66a49008b97167690e17efdeb2ce8"
+  },
+  "id": "kbajzS6mJ7RdKYRO",
+  "tags": []
+}
