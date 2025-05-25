@@ -1,0 +1,248 @@
+{
+  "name": "playwright_docker",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.data }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an expert extraction algorithm.\nOnly extract relevant information from the text.\nIf you do not know the value of an attribute asked to extract, you may omit the attribute's value."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        780,
+        560
+      ],
+      "id": "bd035b25-c46a-4911-9051-488395b05469",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        560
+      ],
+      "id": "90006a20-528c-4f88-bb24-c13f7a07e239",
+      "name": "When chat message received",
+      "webhookId": "617cfb99-13c5-4954-bdcb-7c79a1ee64b0"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        740,
+        740
+      ],
+      "id": "5f8c9e5f-c50b-49be-9281-4bf5cd9ea7c3",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "bEdr8IVJAwEQLw3S",
+          "name": "Azure Open AI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        720
+      ],
+      "id": "08c79956-403e-436f-839e-bbed5cfb7f7f",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        540,
+        560
+      ],
+      "id": "71203d4c-b895-4ad8-9942-b3d5b734f9bc",
+      "name": "Markdown2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.7.212:8020/fetch_html",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        140,
+        560
+      ],
+      "id": "9de52d34-53c3-4e42-adf7-afdc9ed55a41",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\"Time\": \"90'+4'\",\n\t\"Commentary\": \"Match ends, Barcelona 4, Borussia Dortmund 0.\"},\n      {\"Time\": \"90'+2'\",\n\t\"Commentary\": \"Julien Duranville (Borussia Dortmund) wins a free kick in the defensive half.\"}]"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1020,
+        740
+      ],
+      "id": "82a7c8ec-29f8-4877-8d6d-a7f65e5731fb",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "content": "# AI Agent for Data Extraction",
+        "height": 440,
+        "width": 460,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        700,
+        440
+      ],
+      "id": "9c1745f0-3e18-4161-9f68-cb086d193473",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# HTML to Markdown",
+        "height": 440,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        440
+      ],
+      "id": "2c5670da-e716-40c0-8329-4c90c546f7d1",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# AI Agent for crawler\n# with Playwright API Server",
+        "height": 440,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        440
+      ],
+      "id": "3ea5c266-0fd7-4f10-8cab-b83acd478811",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Markdown2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "126ac2ca-d6a6-4202-8ffb-6c39c34ef50b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "10436bf752248f6c30e2d7106c6d535d53645614098bae17f94ad8bb9b92bb96"
+  },
+  "id": "Hnxdg4t8B5IPqXzz",
+  "tags": []
+}
