@@ -1,0 +1,88 @@
+{
+  "name": "playwright_workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.7.212:8020/fetch_markdown",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.query }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        0
+      ],
+      "id": "828a9ed6-68d2-47c3-b35e-f02c2cd72589",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9cee94af-9ae8-4c1e-91ee-704324db2054",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "content": "# Trigged workflow\n## playwright_workflow",
+        "height": 280,
+        "width": 480
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -100
+      ],
+      "id": "8f8a0b92-949a-45dc-9f59-256e87af88d3",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a6aa33ea-9d88-4c5d-a5bd-97c6a8d9f1c0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "059eb6e23c9b66b6ce768abf5d026625d8c66a49008b97167690e17efdeb2ce8"
+  },
+  "id": "dyQcWvmFAcZL7Klq",
+  "tags": []
+}
