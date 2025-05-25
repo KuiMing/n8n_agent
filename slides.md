@@ -393,7 +393,11 @@ Standard I/O
 
 ----
 
-![](media/QR_slides.png)
+https://github.com/KuiMing/n8n_agent
+
+<img src=media/QR_slides.png width='50%'>
+
+
 
 ----
 
