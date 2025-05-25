@@ -391,7 +391,7 @@ Standard I/O
 
 <!-- .slide: data-background="media/stylist.png" -->
 
-----
+---
 
 https://github.com/KuiMing/n8n_agent
 
