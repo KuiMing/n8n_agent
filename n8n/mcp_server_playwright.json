@@ -1,0 +1,102 @@
+{
+  "name": "mcp_server_playwright",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "playwright_n8n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "033a7243-d01f-41c9-9326-dd4533c68f49",
+      "name": "MCP Server Trigger",
+      "webhookId": "eb34f9a0-4f26-4b4b-9dee-f04a2cbeb805"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to use playwright crawl the website",
+        "workflowId": {
+          "__rl": true,
+          "value": "dyQcWvmFAcZL7Klq",
+          "mode": "list",
+          "cachedResultName": "playwright_workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "query": "={{ $fromAI('query', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "query"
+          ],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        140
+      ],
+      "id": "96e152d4-6385-4686-9370-92c4a608d191",
+      "name": "playwright_markdown"
+    },
+    {
+      "parameters": {
+        "content": "# MCP Server (SSE)",
+        "height": 360,
+        "width": 400,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -60
+      ],
+      "id": "636172df-a1d0-406b-8a05-d6676a8f39f1",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "playwright_markdown": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "97c1fcf8-5ae7-47ea-b37c-d15d92f78379",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "059eb6e23c9b66b6ce768abf5d026625d8c66a49008b97167690e17efdeb2ce8"
+  },
+  "id": "auLMRlTjaQRj3ttg",
+  "tags": []
+}
