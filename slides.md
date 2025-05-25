@@ -15,7 +15,7 @@ Ben
 
 ## Outline
 
-- 提速 3 倍？
+- 老闆的問題
 - AI Agent in n8n
 - MCP in n8n
 - 打造我的 AI 團隊
@@ -28,7 +28,7 @@ Ben
 
 <!-- .slide: data-auto-animate -->
 
-# 提速 3 倍？
+# 老闆的問題
 - <font color='#646464'>AI Agent in n8n</font>
 - <font color='#646464'>MCP in n8n</font>
 - <font color='#646464'>打造我的 AI 團隊</font>
@@ -113,7 +113,7 @@ Ben
 
 <!-- .slide: data-auto-animate -->
 
-- <font color='#646464'> 提速3倍？</font>
+- <font color='#646464'> 老闆的問題</font>
 # AI Agent in n8n
 - <font color='#646464'>MCP in n8n</font>
 - <font color='#646464'>打造我的 AI 團隊</font>
@@ -244,7 +244,7 @@ Ben
 
 <!-- .slide: data-auto-animate -->
 
-- <font color='#646464'> 提速3倍？</font>
+- <font color='#646464'> 老闆的問題</font>
 - <font color='#646464'> AI Agent in n8n</font>
 # MCP in n8n
 - <font color='#646464'>打造我的 AI 團隊</font>
@@ -346,7 +346,7 @@ Standard I/O
 
 <!-- .slide: data-auto-animate -->
 
-- <font color='#646464'> 提速3倍？</font>
+- <font color='#646464'> 老闆的問題</font>
 - <font color='#646464'> AI Agent in n8n </font>
 - <font color='#646464'>MCP in n8n</font>
 # 打造我的 AI 團隊
