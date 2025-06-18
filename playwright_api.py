@@ -16,7 +16,7 @@ async def root():
 
 @app.post("/fetch_markdown")
 async def fetch_markdown(request: UrlRequest):
-    loader = PlaywrightLoader()
+    loader = PlaywrightLoader(wait_until="networkidle")
     content = await loader.async_load(request.url)
     markdown = html_to_markdown(content)
     return {"markdown": markdown}
@@ -24,6 +24,6 @@ async def fetch_markdown(request: UrlRequest):
 
 @app.post("/fetch_html")
 async def fetch_html(request: UrlRequest):
-    loader = PlaywrightLoader()
+    loader = PlaywrightLoader(wait_until="networkidle")
     content = await loader.async_load(request.url)
     return {"html": content}

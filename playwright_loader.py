@@ -34,10 +34,10 @@ def normalize_whitespace(text: str) -> str:
     return "\n".join(lines)
 
 
-def html_to_markdown(content: str | bytes) -> str:
+def html_to_markdown(content: str | bytes, strip: list[str] = ["a", "img"]) -> str:
     if isinstance(content, bytes):
         content = str(charset_normalizer.from_bytes(content).best())
-    md = markdownify(content, strip=["a", "img"])
+    md = markdownify(content, strip=strip)
     return normalize_whitespace(md)
 
 
@@ -48,7 +48,7 @@ class PlaywrightLoader(Loader):
         wait_until: (
             Literal["commit", "domcontentloaded", "load", "networkidle"] | None
         ) = None,
-        browser_headless: bool = True,
+        browser_headless: bool = False,
     ) -> None:
         self.timeout = timeout
         self.wait_until = wait_until
