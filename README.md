@@ -10,6 +10,6 @@
 
 ```bash
 docker build -t playwright-api .
-docker build -t playwright-api .
+docker run -d -p 8020:8020 --name playwright-api playwright-api
 ```
 
