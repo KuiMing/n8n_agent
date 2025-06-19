@@ -4,7 +4,7 @@
 
 2025-06-19
 
-陳奎銘 Ben
+陳奎銘 Ben @南區統計年會
 
 ---
 
@@ -22,9 +22,9 @@
 
 ---
 
-
-
-![n8n_ai_agent](media/n8n_ai_agent.png)
+- # AI Agent
+- # n8n
+- # `playwright`
 
 
 ----
