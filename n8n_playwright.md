@@ -215,7 +215,8 @@ content = page.content()
 ## Take away
 
 - 若有爬蟲需求，請嘗試使用 `playwright`
-- 請用 n8n 和 AI Agent 減少自己需要動手的雜事
+- 請用 AI Agent 減少自己需要動手的雜事
+- 請用 n8n 讓雜事自動化
 
 
 
