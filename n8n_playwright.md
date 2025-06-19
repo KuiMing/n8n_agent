@@ -22,66 +22,16 @@
 
 ---
 
+- # `playwright`
 - # AI Agent
 - # n8n
-- # `playwright`
 
-
-----
-
-
-## AI Agent
-
-
-
-能感知環境、規劃動作與利用記憶進行推理，並透過工具或 API 呼叫執行任務以達成預定目標的系統
-
-
-----
-
-## AI Agent
-
-![ai_agent](media/ai_agent.png)
-
-----
-
-## `n8n`
-
-### API 懶人包 + 樂高
-#### 自動化工作流程工具
-
-----
-
-
-## WHY `n8n`
-- **開源且免費**：可自架設於本地或雲端，無需擔心資料隱私。
-- **高度彈性**：支援自訂節點與腳本，滿足各種自動化需求，可設置多種觸發器。
-- **資源豐富**：擁有龐大開發者社群、豐富範例與插件，官方快速迭代回應新需求，對比封閉商業平台更易獲得資源與技術支援。
-
-----
-
-## `n8n` Nodes
-
-![ai_agent](media/n8n_nodes.png)
-
-
-----
-
-## `n8n` Credential- 地端
-
-
-![](media/credential_local.png)
-
-----
-
-## `n8n` Credential- 雲端
-
-![](media/credential_cloud.png)
 
 
 
 
 ----
+
 
 ## `playwright`
 
@@ -160,6 +110,59 @@ content = page.content()
 - 用現成的，不用自己寫 code
     - docker.io/kuiming/playwright-api
     - https://github.com/KuiMing/n8n_agent
+
+----
+
+## AI Agent
+
+
+
+能感知環境、規劃動作與利用記憶進行推理，並透過工具或 API 呼叫執行任務以達成預定目標的系統
+
+
+----
+
+## AI Agent
+
+![ai_agent](media/ai_agent.png)
+
+----
+
+## `n8n`
+
+### API 懶人包 + 樂高
+#### 自動化工作流程工具
+
+----
+
+
+## WHY `n8n`
+- **開源且免費**：可自架設於本地或雲端，無需擔心資料隱私。
+- **高度彈性**：支援自訂節點與腳本，滿足各種自動化需求，可設置多種觸發器。
+- **資源豐富**：擁有龐大開發者社群、豐富範例與插件，官方快速迭代回應新需求，對比封閉商業平台更易獲得資源與技術支援。
+
+----
+
+## `n8n` Nodes
+
+![ai_agent](media/n8n_nodes.png)
+
+
+----
+
+## `n8n` Credential- 地端
+
+
+![](media/credential_local.png)
+
+----
+
+## `n8n` Credential- 雲端
+
+![](media/credential_cloud.png)
+
+
+
 
 ----
 
